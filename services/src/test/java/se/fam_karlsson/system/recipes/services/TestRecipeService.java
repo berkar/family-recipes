@@ -6,7 +6,7 @@ public class TestRecipeService {
 
     @Test
     public void create() {
-        new RecipeServiceBean();
+        new RecipesServiceBean();
     }
 
 }

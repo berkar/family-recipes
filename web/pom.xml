@@ -12,9 +12,18 @@
     <packaging>war</packaging>
     <dependencies>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>recipes-services</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>

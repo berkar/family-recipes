@@ -10,10 +10,11 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Stateless
-@Path("recipe")
-public class RecipeServiceBean {
+@Path("cookbook")
+public class RecipesServiceBean {
 
 	@PersistenceContext(unitName = "recipes-db")
 	private EntityManager itsEntityManager;
@@ -64,5 +65,10 @@ public class RecipeServiceBean {
 	Response delete(@PathParam("id") String theId) {
 		System.out.println("******** DELETE: " + theId + " ***********");
 		return Response.ok().build();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Recipe> findAll() {
+		return itsEntityManager.createNamedQuery(Recipe.FIND_ALL).getResultList();
 	}
 }

@@ -5,7 +5,6 @@
     <persistence-unit name="recipes-db">
         <jta-data-source>java:jboss/datasources/FamilyRecipesDS</jta-data-source>
 
-        <class>se.fam_karlsson.system.recipes.model.Cookbook</class>
         <class>se.fam_karlsson.system.recipes.model.Recipe</class>
         <class>se.fam_karlsson.system.recipes.model.Ingredient</class>
 

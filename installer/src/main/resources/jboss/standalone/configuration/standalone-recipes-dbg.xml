@@ -183,8 +183,7 @@
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/FamilyRecipesDS" pool-name="FamilyRecipesDS"
                             enabled="true" use-java-context="true">
-                    <connection-url>jdbc:h2:file:${env.PROJ_FAMILY_RECIPES_HOME}/Projects/family-recipes/recipes
-                    </connection-url>
+                    <connection-url>jdbc:h2:tcp://${db.host}:${db.port}/~/recipes</connection-url>
                     <driver>h2</driver>
                     <security>
                         <user-name>sa</user-name>

@@ -5,8 +5,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "RECIPE")
+@NamedQuery(name = Recipe.FIND_ALL, query = "SELECT r FROM Recipe r")
 @SuppressWarnings("unused")
 public class Recipe {
+
+	public final static String FIND_ALL = "Recipe.FIND_ALL";
+
 	private String itsGuid;
 	private String itsName;
 	private String itsDescription;

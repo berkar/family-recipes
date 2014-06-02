@@ -1,15 +1,15 @@
 #!/bin/sh
 
-MAVEN_BUILD=3.2.1
-JDK=8
+#MAVEN_BUILD=3.2.1
+#JDK=8
 
-echo Using Maven ${MAVEN_BUILD} as build environment
-sudo update-alternatives --set mvn /home/berkar/Tools/apache-maven-${MAVEN_BUILD}/bin/mvn;
+#echo Using Maven ${MAVEN_BUILD} as build environment
+#sudo update-alternatives --set mvn /home/berkar/Tools/apache-maven-${MAVEN_BUILD}/bin/mvn;
+#
+#sudo sudo update-java-alternatives -s java-${JDK}-sun;
+#echo Setting Java${JDK} as JDK
 
-sudo sudo update-java-alternatives -s java-${JDK}-sun;
-echo Setting Java${JDK} as JDK
-
-export JAVA_HOME="/usr/lib/jvm/java-8-sun"
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 echo Setting JAVA_HOME to: ${JAVA_HOME}
 
 export JBOSS_HOME="${HOME}/Tools/jboss8"
