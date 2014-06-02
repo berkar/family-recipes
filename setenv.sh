@@ -15,6 +15,9 @@ echo Setting JAVA_HOME to: ${JAVA_HOME}
 export JBOSS_HOME="${HOME}/Tools/jboss8"
 echo Setting JBOSS_HOME to: ${JBOSS_HOME}
 
+export H2_HOME="${HOME}/Tools/h2"
+echo Setting H2_HOME to: ${H2_HOME}
+
 export PROJ_FAMILY_RECIPES_HOME="$(pwd)"
 echo Setting PROJ_FAMILY_RECIPE_HOME to: ${PROJ_FAMILY_RECIPES_HOME}
 
