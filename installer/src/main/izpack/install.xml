@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<installation version="1.0">
+
+    <!--
+            The info section.
+            The meaning of the tags should be natural ...
+        -->
+    <info>
+        <appname>@{project.name}</appname>
+        <appversion>@{project.version}</appversion>
+        <authors>
+            <author name="${user.name}" email="bertil.karlsson@lm.se"/>
+        </authors>
+        <url>http://www.metria.se/</url>
+        <javaversion>1.8</javaversion>
+        <requiresjdk>yes</requiresjdk>
+        <uninstaller name="${shortName}-uninstaller.jar" write="yes"/>
+        <summarylogfilepath>$INSTALL_PATH/Uninstaller/${shortName}-summary.htm</summarylogfilepath>
+        <writeinstallationinformation>no</writeinstallationinformation>
+    </info>
+
+    <!--
+            The gui preferences indication.
+            Sets the installer window to 640x480. It will not be able to change the size.
+        -->
+    <guiprefs width="640" height="480" resizable="no"/>
+
+    <!--
+            The locale section.
+        -->
+    <locale>
+        <langpack iso3="eng"/>
+    </locale>
+
+    <variables>
+        <variable name="shortName" value="recipe"/>
+        <variable name="name" value="Family - Recipes"/>
+        <variable name="project.id" value="@{project.id}"/>
+        <variable name="project.name" value="@{project.name}"/>
+        <variable name="project.version" value="@{project.version}"/>
+    </variables>
+
+    <!--
+            The resources section.
+            The ids must be these ones if you want to use the LicencePanel and/or the InfoPanel.
+        -->
+    <resources>
+        <res id="InfoPanel.info" src="recipe-readme.txt"/>
+        <res id="TargetPanel.dir" src="default-dir.txt" parse="no"/>
+    </resources>
+
+    <!--
+            The panels section.
+            We indicate here which panels we want to use. The order will be respected.
+        -->
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="InfoPanel"/>
+        <panel classname="TargetPanel"/>
+        <panel classname="PacksPanel"/>
+        <panel classname="SummaryPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="FinishPanel"/>
+    </panels>
+
+    <listeners>
+        <listener installer="SummaryLoggerInstallerListener">
+            <os family="windows"/>
+        </listener>
+    </listeners>
+
+    <!--
+            The packs section.
+            We specify here our packs.
+        -->
+    <packs>
+        <pack name="Application" required="no">
+            <description>The Application</description>
+            <singlefile src="flag.dodeploy"
+                        target="$INSTALL_PATH/standalone/deployments/recipes-web-${project.version}.war.dodeploy"
+                        override="true"/>
+            <file src="recipes-web-${project.version}.war" targetdir="$INSTALL_PATH/standalone/deployments"
+                  override="true"/>
+        </pack>
+
+        <pack name="JBoss configuration" required="no">
+            <description>JBoss configuration file(s)</description>
+            <fileset dir="jboss" targetdir="$INSTALL_PATH" override="true">
+                <include name="**/*"/>
+            </fileset>
+            <!-- No need at the moment
+            <parsable targetfile="$INSTALL_PATH/bin/standalone-recipes.conf"/>
+            <parsable targetfile="$INSTALL_PATH/bin/standalone-recipes-dbg.conf"/>
+            <parsable targetfile="$INSTALL_PATH/standalone/configuration/recipes_utv.properties" type="properties"/>
+            <parsable targetfile="$INSTALL_PATH/standalone/configuration/recipes_utv.properties" type="properties"/>
+            -->
+            <parsable targetfile="$INSTALL_PATH/standalone/configuration/standalone-recipe.xml" type="xml"/>
+            <parsable targetfile="$INSTALL_PATH/standalone/configuration/standalone-recipe-dbg.xml" type="xml"/>
+        </pack>
+    </packs>
+
+</installation>
